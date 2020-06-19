@@ -1,4 +1,4 @@
-export const getData = (endPoint, API_ROOT) => {
+export const getData = (endPoint, API_ROOT) => {    // данная функция не используется!
   return fetch(`${API_ROOT}/${endPoint}`)
     .then(res => {
       if (res.ok) {

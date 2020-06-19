@@ -1,4 +1,10 @@
 const path = require(`path`);
+// Переход по ссылкам работает неправильно,
+// добавление нескольких вещей в конфигурацию вашего webpack-а решить проблему.
+// В частности, output.publicPath = '/' и devServer.historyApiFallback = true.
+// Вот пример конфигурации веб-пакета ниже,
+// который использует оба, и исправляет проблему обновления.
+// Если вам интересно "почему": https://webpack.js.org/configuration/dev-server/
 
 module.exports = {
     entry: `./src/index.js`,
@@ -12,6 +18,7 @@ module.exports = {
         contentBase: path.join(__dirname, `public`),
         open: false,
         port: 3000,
+        historyApiFallback: true,
     },
     module: {
         rules: [

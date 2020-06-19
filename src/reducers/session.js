@@ -1,4 +1,6 @@
 import { LOG_IN, LOG_OUT, LOG_IN_FAILURE } from '../actions/SessionActions'
+// из actions получаете константы, это не совсем хорошая практика (данный файл переименовать можно на auth)
+// для констант, лучше создать отельную папку в src, к примеру constants и там создать файл, и внутри файла можно создать объект authConstants.
 
 const initialState = {
   user: null,
@@ -10,21 +12,22 @@ export default (state = initialState, action) => {
     case LOG_IN:
       return {
         ...state,
-        user: {
+        user: {    // можно просто action.user (с учетом замечания в SessionAction)
           name: action.payload.name,
         },
-        errorMessage: '',
+        errorMessage: '',   // по дефолту в state уже есть это строка
       }
     case LOG_OUT:
       return {
-        ...state,
+        ...state,   // мы уже вышли из системы, можно ничего не возвращать
         user: null,
         errorMessage: '',
       }
     case LOG_IN_FAILURE:
       return {
-        ...state,
+        ...state, // ненужная строка
         errorMessage: action.payload.errorMessage,
+        // с учетом замечания в SessionAction мы могли бы просто получить action.error
       }
     default:
       return state

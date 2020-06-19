@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Profile = ({ user }) => {
+const Profile = ({ user }) => {   // лучше в виде класса организовать
   return (
     <React.Fragment>
       <h2>Профиль</h2>

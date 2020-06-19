@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Redirect } from 'react-router-dom'
 
 class Login extends PureComponent {
-  state = {
+  state = {   // лучше присвоить переменной внутри конструктора
     redirectToPreviousRoute: false,
     userName: '',
     password: '',
@@ -13,8 +13,8 @@ class Login extends PureComponent {
     e.preventDefault()
     const { userName, password } = this.state
 
-    this.props.logIn(
-      {
+    this.props.logIn(   // вывести props в конструктор
+      {                 // лучше написать аргументы в одной строке
         userName,
         password,
       },
@@ -28,15 +28,15 @@ class Login extends PureComponent {
     const value = e.currentTarget.value
     const fieldName = e.currentTarget.dataset.fieldName
 
-    this.setState(prev => ({
-      ...prev,
+    this.setState(prev => ({    // можно без аргумента и стрелочной функции
+      ...prev,    // это не нужная строка, зачем передавать какие-то аргументы функции(
       [fieldName]: value,
     }))
   }
 
   render() {
     const { location, errorMessage } = this.props
-    const { from } = location.state || { from: { pathname: '/' } }
+    const { from } = location.state || { from: { pathname: '/' } }  // Если данные валидны: редирект на /profile а не на главную
     const { userName, password, redirectToPreviousRoute } = this.state
 
     if (redirectToPreviousRoute) {
@@ -68,7 +68,7 @@ class Login extends PureComponent {
   }
 }
 
-Login.propTypes = {
+Login.propTypes = {   // проверка типов данных, это очень хорошо
   logIn: PropTypes.func.isRequired,
   errorMessage: PropTypes.string,
 }
