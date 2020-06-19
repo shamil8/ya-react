@@ -28,8 +28,8 @@ class Login extends PureComponent {
     const value = e.currentTarget.value
     const fieldName = e.currentTarget.dataset.fieldName
 
-    this.setState(prev => ({    // можно без аргумента и стрелочной функции
-      ...prev,    // это не нужная строка, зачем передавать какие-то аргументы функции(
+    this.setState(prev => ({    // можно без стрелочной функции и аргумента
+      ...prev,    // зачем передавать какие-то аргументы функции(
       [fieldName]: value,
     }))
   }
